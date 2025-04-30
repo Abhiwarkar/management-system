@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Character encoding and responsive viewport meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO and description meta tag -->
+    <meta name="description" content="A modern student registration system to manage student records">
+    
+    <!-- Page title -->
+    <title>Student Registration System</title>
+    
+    <!-- External CSS libraries -->
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom stylesheet for styling -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Page Header -->
+        <header class="header">
+            <div class="header-content">
+                <!-- Main page title with graduation cap icon -->
+                <h1><i class="fas fa-user-graduate"></i> Student Registration System</h1>
+                <p class="subtitle">Manage student records efficiently with our modern system</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Student Registration Form Section -->
+            <section class="card form-section">
+                <h2><i class="fas fa-user-plus"></i> Student Registration Form</h2>
+                
+                <!-- Form for adding new students -->
+                <form id="studentForm" class="student-form">
+                    <div class="form-grid">
+                        <!-- Full Name Input -->
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="name" placeholder="John Doe" required>
+                            </div>
+                            <!-- Error message placeholder for name validation -->
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+                        
+                        <!-- Student ID Input -->
+                        <div class="form-group">
+                            <label for="id">Student ID</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-id-card"></i>
+                                <input type="text" id="id" placeholder="123456" required>
+                            </div>
+                            <!-- Error message placeholder for ID validation -->
+                            <span class="error-message" id="idError"></span>
+                        </div>
+                        
+                        <!-- Email Address Input -->
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" placeholder="john@example.com" required>
+                            </div>
+                            <!-- Error message placeholder for email validation -->
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+                        
+                        <!-- Class/Grade Input -->
+                        <div class="form-group">
+                            <label for="class">Class/Grade</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                                <input type="text" id="class" placeholder="Grade 10" required>
+                            </div>
+                            <!-- Error message placeholder for class validation -->
+                            <span class="error-message" id="classError"></span>
+                        </div>
+                        
+                        <!-- Contact Number Input -->
+                        <div class="form-group">
+                            <label for="contact">Contact Number</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-phone"></i>
+                                <input type="text" id="contact" placeholder="9876543210" required>
+                            </div>
+                            <!-- Error message placeholder for contact validation -->
+                            <span class="error-message" id="contactError"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" id="submitBtn" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Register Student
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Student Records Section -->
+            <section class="card records-section">
+                <!-- Section Header with Search -->
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Student Records</h2>
+                    <div class="search-container">
+                        <div class="search-input">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search students...">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Student Records Table -->
+                <div class="table-container">
+                    <table id="studentTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Class</th>
+                                <th>Contact</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentTableBody">
+                            <!-- Dynamically populated student records will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <!-- Edit Student Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3><i class="fas fa-edit"></i> Edit Student</h3>
+                    <!-- Close modal button -->
+                    <span class="close-modal">&times;</span>
+                </div>
+                
+                <!-- Modal Body with Edit Form -->
+                <div class="modal-body">
+                    <form id="editStudentForm" class="student-form">
+                        <div class="form-grid">
+                            <!-- Edit Form Fields (similar to registration form) -->
+                            <!-- Each field mimics the original form with 'edit' prefix -->
+                            <div class="form-group">
+                                <label for="editName">Full Name</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="editName" placeholder="John Doe" required>
+                                </div>
+                                <span class="error-message" id="editNameError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="editId">Student ID</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-id-card"></i>
+                                    <input type="text" id="editId" placeholder="123456" required>
+                                </div>
+                                <span class="error-message" id="editIdError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="editEmail">Email Address</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="editEmail" placeholder="john@example.com" required>
+                                </div>
+                                <span class="error-message" id="editEmailError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="editClass">Class/Grade</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <input type="text" id="editClass" placeholder="Grade 10" required></div>
+                                    <span class="error-message" id="editClassError"></span>
+                                </div>
+                                
+                                <!-- Contact Number Input for Edit -->
+                                <div class="form-group">
+                                    <label for="editContact">Contact Number</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-phone"></i>
+                                        <input type="text" id="editContact" placeholder="9876543210" required>
+                                    </div>
+                                    <span class="error-message" id="editContactError"></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Edit Form Action Buttons -->
+                            <div class="form-actions">
+                                <!-- Update Student Button -->
+                                <button type="submit" id="updateBtn" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Update Student
+                                </button>
+                                
+                                <!-- Cancel Edit Button -->
+                                <button type="button" id="cancelEditBtn" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- External JavaScript file for interactivity and functionality -->
+        <script src="script.js"></script>
+    </body>
+    </html>
